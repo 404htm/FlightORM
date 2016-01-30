@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="FlightORM" Version="1.0" Language="en-US" Publisher="Kelly Gendron" />
+    <Identity Id="FlightORM.VS.Kelly Gendron.b4ff8b0d-0ed9-433f-8fab-207452470273" Version="1.0" Language="en-US" Publisher="Kelly Gendron" />
     <DisplayName>FlightORM.VS</DisplayName>
     <Description>Empty VSIX Project.</Description>
   </Metadata>
