@@ -18,20 +18,48 @@ namespace FlightORM.SQL
             _cnn.Open();
         }
 
-
-        public IEnumerable<string> GetTables(string schema = null, bool includeSchema = true)
+        public IList<string> GetTables(string schema = null)
         {
-            return RunInfoSchemaQuery(schema, includeSchema, "BASE TABLE");
+            return runInfoSchemaQuery(schema, "BASE TABLE").ToList();
         }
 
-        public IEnumerable<string> GetViews(string schema = null, bool includeSchema = true)
+        public IList<string> GetViews(string schema = null)
         {
-            return RunInfoSchemaQuery(schema, includeSchema, "VIEW");
+            return runInfoSchemaQuery(schema, "VIEW").ToList();
         }
 
-        private IEnumerable<string> RunInfoSchemaQuery(string schema, bool includeSchema, string type)
+        public IList<SqlColumnInfo> GetColumns(string objectname)
         {
-            string query = "SELECT * FROM information_schema.tables WHERE TABLE_TYPE = @type";
+            return runColumnQuery(objectname).ToList();
+        }
+
+        private IEnumerable<SqlColumnInfo> runColumnQuery(string objectname)
+        {
+            string query = "SELECT [name], [column_id], [is_nullable], [is_identity] FROM sys.columns WHERE object_id = OBJECT_ID(@object_name)";
+
+            var command = new SqlCommand(query, _cnn);
+            command.CommandType = CommandType.Text;
+            command.Parameters.AddWithValue("@object_name", objectname);
+
+            var reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                yield return new SqlColumnInfo
+                {
+                    Name = Convert.ToString(reader["name"]),
+                    ColumnId = Convert.ToInt32(reader["column_id"]),
+                    Nullable = Convert.ToBoolean(reader["is_nullable"]),
+                    Identity = Convert.ToBoolean(reader["is_identity"])
+                };
+            }
+
+            reader.Close();
+        }
+
+        private IEnumerable<string> runInfoSchemaQuery(string schema, string type)
+        {
+            string query = "SELECT [TABLE_SCHEMA], [TABLE_NAME] FROM information_schema.tables WHERE TABLE_TYPE = @type";
             if (schema != null) query += " AND TABLE_SCHEMA = @schema";
 
             var command = new SqlCommand(query, _cnn);
@@ -43,25 +71,21 @@ namespace FlightORM.SQL
 
             while (reader.Read())
             {
-                string result = (includeSchema) ?
-                    $"{reader["TABLE_SCHEMA"]}.{reader["TABLE_NAME"]}" :
-                    $"{reader["TABLE_NAME"]}";
-                yield return result;
+                yield return $"[{reader["TABLE_SCHEMA"]}].[{reader["TABLE_NAME"]}]";
             }
-
+            reader.Close();
         }
 
+
+
         #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
+        private bool disposedValue = false;
 
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
             {
-                if (disposing)
-                {
-                    _cnn.Close();
-                }
+                if (disposing) _cnn.Close();
                 disposedValue = true;
             }
         }

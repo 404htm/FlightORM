@@ -21,57 +21,60 @@ namespace FlightORM.SQL.Tests
         [TestMethod]
         public void GetAllTablesWithSchema()
         {
-            List<string> tables;
+            IList<string> tables;
             using (var reader = new SQLSchemaReader(_cstr_db))
             {
-                tables = reader.GetTables(null, true).ToList();
+                tables = reader.GetTables(null);
             }
 
-            Assert.IsTrue(tables.Contains("dbo.Customer"), "dbo.Customer not found");
-            Assert.IsTrue(tables.Contains("dbo.Order"), "dbo.Order not found");
-            Assert.IsTrue(tables.Contains("inventory.Item"), "inventory.Item not found");
-        }
-
-        [TestMethod]
-        public void GetAllTablesNoSchema()
-        {
-            List<string> tables;
-            using (var reader = new SQLSchemaReader(_cstr_db))
-            {
-                tables = reader.GetTables(null, false).ToList();
-            }
-
-            Assert.IsTrue(tables.Contains("Customer"), "dbo.Customer not found");
-            Assert.IsTrue(tables.Contains("Order"), "dbo.Order not found");
-            Assert.IsTrue(tables.Contains("Item"), "inventory.Item not found");
+            Assert.IsTrue(tables.Contains("[dbo].[Customer]"), "dbo.Customer not found");
+            Assert.IsTrue(tables.Contains("[dbo].[Order]"), "dbo.Order not found");
+            Assert.IsTrue(tables.Contains("[inventory].[Item]"), "inventory.Item not found");
         }
 
         [TestMethod]
         public void GetdboTablesWithSchema()
         {
-            List<string> tables;
+            IList<string> tables;
             using (var reader = new SQLSchemaReader(_cstr_db))
             {
-                tables = reader.GetTables("dbo", true).ToList();
+                tables = reader.GetTables("dbo");
             }
 
-            Assert.IsTrue(tables.Contains("dbo.Customer"), "dbo.Customer not found");
-            Assert.IsTrue(tables.Contains("dbo.Order"), "dbo.Order not found");
-            Assert.IsFalse(tables.Contains("inventory.Item"), "inventory.Item not found");
+            Assert.IsTrue(tables.Contains("[dbo].[Customer]"), "dbo.Customer not found");
+            Assert.IsTrue(tables.Contains("[dbo].[Order]"), "dbo.Order not found");
+            Assert.IsFalse(tables.Contains("[inventory].[Item]"), "inventory.Item not found");
         }
 
         [TestMethod]
-        public void GetdboTablesNoSchema()
+        public void GetColumns()
         {
-            List<string> tables;
+            IList<SqlColumnInfo> customer_columns;
+            IList<SqlColumnInfo> order_columns;
+
             using (var reader = new SQLSchemaReader(_cstr_db))
             {
-                tables = reader.GetTables("dbo", false).ToList();
+                customer_columns = reader.GetColumns("dbo.customer");
+                order_columns = reader.GetColumns("[dbo].[ORDER]");
             }
 
-            Assert.IsTrue(tables.Contains("Customer"), "dbo.Customer not found");
-            Assert.IsTrue(tables.Contains("Order"), "dbo.Order not found");
-            Assert.IsFalse(tables.Contains("Item"), "inventory.Item not found");
+            Assert.IsTrue(customer_columns.Any());
+            Assert.IsTrue(order_columns.Any());
+
+            var id_column = customer_columns.SingleOrDefault(c => c.Name == "Id");
+            
+            Assert.IsNotNull(id_column);
+            Assert.IsTrue(id_column.Identity);
+            Assert.IsFalse(id_column.Nullable);
+            Assert.IsTrue(id_column.ColumnId == 1);
+
+            var name_column = customer_columns.SingleOrDefault(c => c.Name == "FirstName");
+
+            Assert.IsNotNull(name_column);
+            Assert.IsFalse(name_column.Identity);
+            Assert.IsTrue(name_column.Nullable);
+            Assert.IsTrue(name_column.ColumnId == 3);
         }
+
     }
 }
