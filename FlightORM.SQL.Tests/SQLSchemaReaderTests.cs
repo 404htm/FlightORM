@@ -22,7 +22,7 @@ namespace FlightORM.SQL.Tests
         public void GetAllTablesWithSchema()
         {
             IList<string> tables;
-            using (var reader = new SQLSchemaReader(_cstr_db))
+            using (var reader = new SqlSchemaReader(_cstr_db))
             {
                 tables = reader.GetTables(null);
             }
@@ -36,7 +36,7 @@ namespace FlightORM.SQL.Tests
         public void GetdboTablesWithSchema()
         {
             IList<string> tables;
-            using (var reader = new SQLSchemaReader(_cstr_db))
+            using (var reader = new SqlSchemaReader(_cstr_db))
             {
                 tables = reader.GetTables("dbo");
             }
@@ -52,7 +52,7 @@ namespace FlightORM.SQL.Tests
             IList<SqlColumnInfo> customer_columns;
             IList<SqlColumnInfo> order_columns;
 
-            using (var reader = new SQLSchemaReader(_cstr_db))
+            using (var reader = new SqlSchemaReader(_cstr_db))
             {
                 customer_columns = reader.GetColumns("dbo.customer");
                 order_columns = reader.GetColumns("[dbo].[ORDER]");

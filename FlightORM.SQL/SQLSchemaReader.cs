@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace FlightORM.SQL
 {
-    public class SQLSchemaReader : IDisposable
+    public class SqlSchemaReader : IDisposable
     {
         SqlConnection _cnn;
 
-        public SQLSchemaReader(string connectionString)
+        public SqlSchemaReader(string connectionString)
         {
             _cnn = new SqlConnection(connectionString);
             _cnn.Open();

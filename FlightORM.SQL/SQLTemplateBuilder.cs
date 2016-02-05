@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FlightORM.SQL
 {
-    public class SQLTemplateBuilder
+    public class SqlTemplateBuilder
     {
         SqlTableInfo _tableInfo;
         string _columns;
@@ -14,7 +14,7 @@ namespace FlightORM.SQL
         string _skip;
         string _take;
 
-        public SQLTemplateBuilder(SqlTableInfo TableInfo)
+        public SqlTemplateBuilder(SqlTableInfo TableInfo)
         {
             _columns = TableInfo.ColumnInfo.Select(c => $"[{c.Name}]").Aggregate((a, b) => $"{a}, {b}");
             _identity = TableInfo.ColumnInfo
