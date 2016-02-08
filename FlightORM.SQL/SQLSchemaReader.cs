@@ -33,6 +33,15 @@ namespace FlightORM.SQL
             return runColumnQuery(objectname).ToList();
         }
 
+        //public SqlTableInfo GetTableInfo(string objectname)
+        //{
+        //    var result = new SqlTableInfo
+        //    {
+        //        Name = objectname,
+        //        ColumnInfo = GetColumns(objectname)
+        //    }
+        //}
+
         private IEnumerable<SqlColumnInfo> runColumnQuery(string objectname)
         {
             string query = "SELECT [name], [column_id], [is_nullable], [is_identity] FROM sys.columns WHERE object_id = OBJECT_ID(@object_name)";

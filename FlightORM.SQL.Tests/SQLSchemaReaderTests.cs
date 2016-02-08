@@ -8,13 +8,11 @@ namespace FlightORM.SQL.Tests
     [TestClass]
     public class SQLSchemaReaderTests
     {
-        string _cstr;
         string _cstr_db;
 
         [TestInitialize]
         public void Init()
         {
-            _cstr = Properties.Settings.Default.cnn_server;
             _cstr_db = Properties.Settings.Default.cnn_db;
         }
 
@@ -44,6 +42,7 @@ namespace FlightORM.SQL.Tests
             Assert.IsTrue(tables.Contains("[dbo].[Customer]"), "dbo.Customer not found");
             Assert.IsTrue(tables.Contains("[dbo].[Order]"), "dbo.Order not found");
             Assert.IsFalse(tables.Contains("[inventory].[Item]"), "inventory.Item not found");
+
         }
 
         [TestMethod]

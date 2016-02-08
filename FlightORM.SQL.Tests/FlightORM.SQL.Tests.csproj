@@ -61,6 +61,7 @@
     </Compile>
     <Compile Include="SQLSchemaReaderTests.cs" />
     <Compile Include="SQLValidatorTests.cs" />
+    <Compile Include="SqlTemplatingTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FlightORM.SQL\FlightORM.SQL.csproj">

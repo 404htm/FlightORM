@@ -11,13 +11,14 @@ namespace FlightORM.SQL
         SqlTableInfo _tableInfo;
         string _columns;
         string _identity;
-        string _skip;
-        string _take;
+        //string _skip;
+        //string _take;
 
-        public SqlTemplateBuilder(SqlTableInfo TableInfo)
+        public SqlTemplateBuilder(SqlTableInfo tableInfo)
         {
-            _columns = TableInfo.ColumnInfo.Select(c => $"[{c.Name}]").Aggregate((a, b) => $"{a}, {b}");
-            _identity = TableInfo.ColumnInfo
+            _columns = tableInfo.ColumnInfo.Select(c => $"[{c.Name}]").Aggregate((a, b) => $"{a}, {b}");
+            _tableInfo = tableInfo;
+            _identity = tableInfo.ColumnInfo
                 .Where(c => c.Identity)
                 .Select(c => $"[{c.Name}] = @{c.Name}")
                 .Aggregate((a, b) => $"{a} AND {b}");

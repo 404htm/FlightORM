@@ -10,7 +10,7 @@ namespace FlightORM.SQL
     {
         public string Name { get; set; }
         public string Schema { get; set; }
-        public List<SqlColumnInfo> ColumnInfo { get; set; }
+        public IList<SqlColumnInfo> ColumnInfo { get; set; }
         
     }
 }
