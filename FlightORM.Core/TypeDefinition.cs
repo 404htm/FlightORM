@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace FlightORM.Core
 {
-    [DataContract]
-    public class TypeDefinition : StoreableBase<TypeDefinition>
-    {
-        [DataMember]
-        public string Name { get; set; }
-        [DataMember]
-        public Type SimpleType { get; set; }
-        [DataMember]
-        public Dictionary<string, TypeDefinition> Properties { get; set; }
-    }
+	[DataContract]
+	public class TypeDefinition : StoreableBase<TypeDefinition>
+	{
+		[DataMember]
+		public string Name { get; set; }
+		[DataMember]
+		public Type SimpleType { get; set; }
+		[DataMember]
+		public Dictionary<string, TypeDefinition> Properties { get; set; }
+	}
 }

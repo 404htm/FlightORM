@@ -11,57 +11,57 @@ using System.Diagnostics;
 
 namespace FlightORM.SQL.Tests
 {
-    [TestClass]
-    public class SQLValidatorTests
-    {
-        string _cstr_db;
+	[TestClass]
+	public class SQLValidatorTests
+	{
+		string _cstr_db;
 
-        [TestInitialize]
-        public void Init()
-        {
-            _cstr_db = Properties.Settings.Default.cnn_db;
-        }
+		[TestInitialize]
+		public void Init()
+		{
+			_cstr_db = Properties.Settings.Default.cnn_db;
+		}
 
-        [TestMethod]
-        public void TestParseSimple()
-        {
-            using (var validator = new SqlValidator(_cstr_db))
-            { 
-                Assert.IsTrue(validator.ParseSQLBasic("select * from Customers;"));
-                Assert.IsFalse(validator.ParseSQLBasic("select  from Customers;"));
-            }
+		[TestMethod]
+		public void TestParseSimple()
+		{
+			using (var validator = new SqlValidator(_cstr_db))
+			{ 
+				Assert.IsTrue(validator.ParseSQLBasic("select * from Customers;"));
+				Assert.IsFalse(validator.ParseSQLBasic("select  from Customers;"));
+			}
 
-        }
+		}
 
-        [TestMethod]
-        public void TestGetParametersAndValidate_GoodQuery()
-        {
-            using (var validator = new SqlValidator(_cstr_db))
-            {
-                IList<SqlError> errors;
-                var Parameters = validator.GetParametersAndValidate("select * from Customer where FirstName = @name;", out errors);
+		[TestMethod]
+		public void TestGetParametersAndValidate_GoodQuery()
+		{
+			using (var validator = new SqlValidator(_cstr_db))
+			{
+				IList<SqlError> errors;
+				var Parameters = validator.GetParametersAndValidate("select * from Customer where FirstName = @name;", out errors);
 
-                Assert.IsNull(errors);
-                Assert.IsTrue(Parameters.Any());
-                Assert.IsTrue(Parameters.Any(p => p.Name == "@name"));
-            }
-        }
+				Assert.IsNull(errors);
+				Assert.IsTrue(Parameters.Any());
+				Assert.IsTrue(Parameters.Any(p => p.Name == "@name"));
+			}
+		}
 
-        [TestMethod]
-        public void TestGetParametersAndValidate_BadQuery()
-        {
-            using (var validator = new SqlValidator(_cstr_db))
-            {
-                IList<SqlError> errors;
-                var Parameters = validator.GetParametersAndValidate("select * from NotARealTable where FirstName = @name;", out errors);
+		[TestMethod]
+		public void TestGetParametersAndValidate_BadQuery()
+		{
+			using (var validator = new SqlValidator(_cstr_db))
+			{
+				IList<SqlError> errors;
+				var Parameters = validator.GetParametersAndValidate("select * from NotARealTable where FirstName = @name;", out errors);
 
-                Assert.IsNotNull(errors);
-                Assert.AreEqual(errors.Count(), 1);
-                Assert.IsNull(Parameters);
+				Assert.IsNotNull(errors);
+				Assert.AreEqual(errors.Count(), 1);
+				Assert.IsNull(Parameters);
 
-                foreach (var error in errors) Debug.WriteLine(error);
-            }
-        }
+				foreach (var error in errors) Debug.WriteLine(error);
+			}
+		}
 
-    }
+	}
 }

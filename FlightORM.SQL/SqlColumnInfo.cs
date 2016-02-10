@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace FlightORM.SQL
 {
-    public class SqlColumnInfo
-    {
-        public string Name { get; set; }
-        public int ColumnId { get; set; }
-        public bool Nullable { get; set; }
-        public bool Identity { get; set; }
-    }
+	public class SqlColumnInfo
+	{
+		public string Name { get; set; }
+		public int ColumnId { get; set; }
+		public bool Nullable { get; set; }
+		public bool Identity { get; set; }
+	}
 }

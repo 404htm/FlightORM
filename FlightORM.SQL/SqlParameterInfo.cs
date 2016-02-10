@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace FlightORM.SQL
 {
-    public class SqlParameterInfo
-    {
-        public string Name { get; set; }
-        public string SQLType { get; set; }
-        public int ColumnId { get; set; }
-        public bool Nullable { get; set; }
-        public bool Identity { get; set; }
-    }
+	public class SqlParameterInfo
+	{
+		public string Name { get; set; }
+		public string SQLType { get; set; }
+		public int ColumnId { get; set; }
+		public bool Nullable { get; set; }
+		public bool Identity { get; set; }
+	}
 }
