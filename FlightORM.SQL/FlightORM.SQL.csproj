@@ -43,10 +43,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlParameterInfo.cs" />
     <Compile Include="SqlColumnInfo.cs" />
+    <Compile Include="SqlQueryDefinition.cs" />
     <Compile Include="SqlSchemaReader.cs" />
     <Compile Include="SqlTableInfo.cs" />
     <Compile Include="SqlTemplateBuilder.cs" />
     <Compile Include="SqlValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FlightORM.Core\FlightORM.Core.csproj">
+      <Project>{516e511f-fedf-44d5-94ac-3f298aacc843}</Project>
+      <Name>FlightORM.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

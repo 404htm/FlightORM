@@ -59,8 +59,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="SQLSchemaReaderTests.cs" />
-    <Compile Include="SQLValidatorTests.cs" />
+    <Compile Include="SqlSchemaReaderTests.cs" />
+    <Compile Include="SqlValidatorTests.cs" />
     <Compile Include="SqlTemplatingTests.cs" />
   </ItemGroup>
   <ItemGroup>

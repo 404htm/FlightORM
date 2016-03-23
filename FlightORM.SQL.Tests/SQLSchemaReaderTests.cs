@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace FlightORM.SQL.Tests
 {
 	[TestClass]
-	public class SQLSchemaReaderTests
+	public class SqlSchemaReaderTests
 	{
 		string _cstr_db;
 

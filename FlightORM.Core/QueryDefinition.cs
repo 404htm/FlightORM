@@ -26,5 +26,11 @@ namespace FlightORM.Core
 		[DataMember]
 		public SourceType Source { get; set; }
 
+		[DataMember]
+		public TypeDefinition InputType { get; private set; }
+
+		[DataMember]
+		public TypeDefinition OutputType { get; private set; }
+
 	}
 }

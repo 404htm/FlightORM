@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightORM.Core", "FlightORM.Core\FlightORM.Core.csproj", "{516E511F-FEDF-44D5-94AC-3F298AACC843}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightORM.VS", "FlightORM.VS\FlightORM.VS.csproj", "{E3168673-D173-4FA0-828C-ABC97FA297A6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightORM.UI", "FlightORM.UI\FlightORM.UI.csproj", "{06CD13D2-9789-414F-B0C2-76F784959FC2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightORM.SQL", "FlightORM.SQL\FlightORM.SQL.csproj", "{536270BC-0C2F-41F5-A7EA-9E66828A87F7}"
@@ -16,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightORM.SQL.Tests", "FlightORM.SQL.Tests\FlightORM.SQL.Tests.csproj", "{63FB1D8D-01FE-43B7-AF28-EA27E13EDE33}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "FlightORM.TestDB", "FlightORM.TestDB\FlightORM.TestDB.sqlproj", "{1907EAB3-0BF8-4155-BDA9-899EFA1BF116}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightORM.VS", "FlightORM.VS\FlightORM.VS.csproj", "{5858C251-67F5-46CC-BCC5-73766C7AEE40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,10 +27,6 @@ Global
 		{516E511F-FEDF-44D5-94AC-3F298AACC843}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{516E511F-FEDF-44D5-94AC-3F298AACC843}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{516E511F-FEDF-44D5-94AC-3F298AACC843}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E3168673-D173-4FA0-828C-ABC97FA297A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E3168673-D173-4FA0-828C-ABC97FA297A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E3168673-D173-4FA0-828C-ABC97FA297A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E3168673-D173-4FA0-828C-ABC97FA297A6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{06CD13D2-9789-414F-B0C2-76F784959FC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{06CD13D2-9789-414F-B0C2-76F784959FC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06CD13D2-9789-414F-B0C2-76F784959FC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -49,6 +45,10 @@ Global
 		{1907EAB3-0BF8-4155-BDA9-899EFA1BF116}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1907EAB3-0BF8-4155-BDA9-899EFA1BF116}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1907EAB3-0BF8-4155-BDA9-899EFA1BF116}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{5858C251-67F5-46CC-BCC5-73766C7AEE40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5858C251-67F5-46CC-BCC5-73766C7AEE40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5858C251-67F5-46CC-BCC5-73766C7AEE40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5858C251-67F5-46CC-BCC5-73766C7AEE40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

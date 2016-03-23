@@ -12,7 +12,7 @@ using System.Diagnostics;
 namespace FlightORM.SQL.Tests
 {
 	[TestClass]
-	public class SQLValidatorTests
+	public class SqlValidatorTests
 	{
 		string _cstr_db;
 
