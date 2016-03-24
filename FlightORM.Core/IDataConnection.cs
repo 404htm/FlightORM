@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FlightORM.Core
 {
-	public interface IDataSource
+	public interface IDataConnection
 	{
 		Guid Id { get; set; }
 		string Name { get; set; }
