@@ -8,16 +8,20 @@ using System.Threading.Tasks;
 namespace FlightORM.Core
 {
 	[DataContract]
+	[KnownType(typeof(SQLDataConnection))]
 	public class Context:StoreableBase<Context>
 	{
 		[DataMember]
 		public string Name { get; set; }
 
 		[DataMember]
-		public IList<IDataSource> DataSources { get; set; }
+		public Dictionary<Guid, IDataSource> DataSources { get; set; }
 
 		[DataMember]
-		public IList<QueryDefinition> Queries { get; set; }
+		public Dictionary<Guid, QueryDefinition> Queries { get; set; }
+
+		[DataMember]
+		public Dictionary<Guid, QueryTemplate> Templates { get; set; }
 
 
 	}

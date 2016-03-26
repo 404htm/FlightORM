@@ -48,6 +48,7 @@
     <Compile Include="Context.cs" />
     <Compile Include="QueryTemplate.cs" />
     <Compile Include="SourceType.cs" />
+    <Compile Include="SQLDataConnection.cs" />
     <Compile Include="StoreableBase.cs" />
     <Compile Include="TypeDefinition.cs" />
   </ItemGroup>
