@@ -5,7 +5,9 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 	xmlns:local="clr-namespace:FlightORM.UI"
 	mc:Ignorable="d" 
-	d:DesignHeight="387.126" d:DesignWidth="449.102">
+	d:DesignHeight="387.126" d:DesignWidth="449.102"
+	DataContext="FlightORM.Core.Context"
+	>
 	<Grid>
 		<GroupBox Header="Context Information" >
 			<TabControl x:Name="tabControl" Margin="0,36,-2,-2">
